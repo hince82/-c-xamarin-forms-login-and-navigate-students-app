@@ -7,13 +7,11 @@
   i can set image source from PCL shared layer to both Android  and IOS.Also enabled 
   grouping in Listview so i can group  students with grouping helper in Utility folder.
   
-
-Folder Stucture: Data, Images,Utility, Views
+##Folder Stucture: Data, Images,Utility, Views
     Data: Converter and POCO Binding class files,also sqlite db file "students.db"
     Images:Student Images
     Utility:Grouping helper file to group students in listview
     Views:Students.xaml and Detail.xaml
-    
     LinkTemplates:Template for reset link
     Login.xaml: Login file, simple stack navigation with navigation.popasync() or 
                 pushasync after "app.IsUserLoggedIn=true". admin username and password is in "constants.cs"
