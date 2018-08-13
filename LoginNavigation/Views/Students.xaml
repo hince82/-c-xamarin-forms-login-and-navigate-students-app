@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:LoginNavigaiton.Views;assembly=LoginNavigaiton"
+             x:Class="LoginNavigaiton.Views.Students"
+             Title="Students"
+             Padding="5,0,5,5">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:ImageResourceConverter x:Key="imageResourceCvt" />
+      <local:BirthdayConverter x:Key="birthdayCvt" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <StackLayout>
+    <SearchBar Placeholder="Öğrenci Ara" TextChanged="OnSearch"></SearchBar>
+    <Button x:Name="Insert" Clicked="OnInsert">Ekle</Button>
+    <ListView x:Name="allStudents"
+              CachingStrategy="RecycleElement"
+              ItemsSource="{Binding .}"
+              IsPullToRefreshEnabled="True"
+              Refreshing="OnRefreshing"
+              ItemSelected="OnItemSelected"
+              HasUnevenRows="True"
+              IsGroupingEnabled="True"
+              GroupDisplayBinding="{Binding Key}"
+              GroupShortNameBinding="{Binding Key}"
+              Footer="{Binding Count, Source={x:Static local:StudentsColl.Students}}"
+              >
+              
+      <ListView.Header>
+        <ContentView Padding="0,5" BackgroundColor="#fff">
+          <Label FontSize="Large" TextColor="#000"
+                 Text="Ibb Aksemsettin Ortaokulu" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+        </ContentView>
+      </ListView.Header>
+
+      <ListView.FooterTemplate>
+        <DataTemplate>
+          <ContentView Padding="0,5">
+            <Label FontSize="Micro"
+                   Text="{Binding ., StringFormat='{0} students'}"
+                   VerticalTextAlignment="Center" HorizontalTextAlignment="End" />
+          </ContentView>
+        </DataTemplate>
+      </ListView.FooterTemplate>
+
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell Height="80">
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="10" />
+              </Grid.ColumnDefinitions>
+
+              <BoxView BackgroundColor="White" />
+
+              <Image WidthRequest="75" Aspect="AspectFit"
+                      Source="{Binding Image, Converter={StaticResource imageResourceCvt}}" />
+
+              <StackLayout Grid.Column="1" VerticalOptions="Center">
+                <Label Text="{Binding FullName}" FontSize="Medium" FontAttributes="Bold" />
+                <Label Text="{Binding Sinifi}" FontSize="Small" TextColor="Accent" />
+              </StackLayout>
+
+              <Label Grid.Column="2"
+                      VerticalOptions="Center"
+                      HorizontalOptions="End" Source="{Binding Gender}" />
+
+              <Label Text="{Binding BirthDate, Converter={StaticResource birthdayCvt}, StringFormat='{0} yasinda'}"
+                      HorizontalOptions="End" VerticalOptions="End"
+                      Grid.Column="1" Grid.ColumnSpan="2"
+                      FontSize="Micro" TextColor="Accent" />
+            </Grid>
+            <ViewCell.ContextActions>
+              <MenuItem Text="Delete" Clicked="OnAlert" IsDestructive="true" />
+            </ViewCell.ContextActions>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

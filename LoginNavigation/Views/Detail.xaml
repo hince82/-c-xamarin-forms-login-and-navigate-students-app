@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            
+             x:Class="LoginNavigaiton.Views.Detail">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:ImageResourceConverter x:Key="imageResourceCvt" />
+      <local:BirthdayConverter x:Key="birthdayCvt" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ScrollView>
+    <StackLayout Spacing="10">
+      <StackLayout.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="5,20,5,5" Android="5,0,5,5" WinPhone="5,0,5,5" />
+      </StackLayout.Padding>
+      <Button x:Name="Update" Clicked="OnUpdate">Güncelle</Button>
+      <Image HeightRequest="200" Aspect="AspectFit"
+                   Source="{Binding Image, Converter={StaticResource imageResourceCvt}}" />
+
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Ad Soyad : " FontAttributes="Bold" HorizontalOptions="Start" TextColor="Accent" />
+        <Entry x:Name="fullName" Text="{Binding FullName}" IsEnabled="false"  FontAttributes="Bold" HorizontalOptions="FillAndExpand" />
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Sınıfı : " FontAttributes="Bold" HorizontalOptions="Start" TextColor="Accent" />
+        <Entry x:Name="sinifi" Text="{Binding Sinifi}" IsEnabled="false" FontAttributes="Bold" HorizontalOptions="FillAndExpand" />
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Boyu : " FontAttributes="Bold" HorizontalOptions="Start" TextColor="Accent" />
+        <Entry x:Name="height" Text="{Binding Height}" IsEnabled="false" FontAttributes="Bold" HorizontalOptions="FillAndExpand" />
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Kilosu : " FontAttributes="Bold" HorizontalOptions="Start" TextColor="Accent" />
+        <Entry x:Name="weight" Text="{Binding Weight}" IsEnabled="false" FontAttributes="Bold" HorizontalOptions="FillAndExpand" />
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Yaşı : " FontAttributes="Bold" HorizontalOptions="Start" TextColor="Accent" />
+        <Entry x:Name="birthDate" Text="{Binding BirthDate,  Converter={StaticResource birthdayCvt}, StringFormat='{0} yrs. old'}" IsEnabled="false" FontAttributes="Bold" HorizontalOptions="FillAndExpand" />
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Cinsiyeti : " FontAttributes="Bold" HorizontalOptions="Start" TextColor="Accent" />
+        <Entry x:Name="gender" Source="{Binding Gender}" HorizontalOptions="Start" />
+      </StackLayout>
+      <StackLayout>
+                 <Button x:Name="btnSave" Clicked="OnSave" IsVisible="false">Kaydet</Button>
+      </StackLayout>
+             <Label x:Name="lblMessage" FontAttributes="Italic" HorizontalOptions="Start" TextColor="Red" />
+    </StackLayout>
+  </ScrollView>
+
+</ContentPage>

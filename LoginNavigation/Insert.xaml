@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LoginNavigation.Insert">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="StartAndExpand">
+            <Label Text="Ad Soyad" />
+            <Entry x:Name="fullName" />
+            <Label x:Name="lblDate" Text="Doğum Tarihi" IsVisible="{Binding Visibility}"/>
+                 <DatePicker x:Name="birthDate"
+                    Format="D"
+                    Margin="30, 0, 0, 30" />
+            <Label Text="Sınıfı" />
+            <Entry x:Name="sinifi" />
+            <Label Text="Doğum Yılı" />
+            <Entry x:Name="gender" />
+             <Label Text="Resim Ekle" />
+            <Button Text="Yükle" Clicked="OnUploadClicked" />
+             <Label Text="Boy(cm)" />
+            <Entry x:Name="height" Keyboard="Numeric" />
+             <Label Text="Kilo" />
+            <Entry x:Name="weight" Keyboard="Numeric" />
+            <Button Text="Kaydet" Clicked="OnSaveClicked" />
+             <Label x:Name="lblMessage" />
+         </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
