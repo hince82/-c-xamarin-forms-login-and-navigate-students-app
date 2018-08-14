@@ -1,4 +1,4 @@
-# -c-xamarin-forms-login-and-navigate-students-app
+# C# xamarin-forms- Login and navigate students for teachers app
   Hi,this is my c# app for teachers in Xamarin.Forms. I chose Xamarin.forms because the 
   ease of developing for both Android and IOS.  In this app  teachers can 
   look students' personal info to recognize them easily. Specially in big schools
@@ -7,7 +7,8 @@
   i can set image source from PCL shared layer to both Android  and IOS.Also enabled 
   grouping in Listview so i can group  students with grouping helper in Utility folder.
   
-##Folder Stucture: Data, Images,Utility, Views
+## Folder Stucture
+   Data, Images,Utility, Views
     Data: Converter and POCO Binding class files,also sqlite db file "students.db"
     Images:Student Images
     Utility:Grouping helper file to group students in listview
