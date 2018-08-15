@@ -8,10 +8,10 @@
   grouping in Listview so i can group  students with grouping helper in Utility folder.
   
 ## Folder Stucture
-   # Data, Images,Utility, Views
-   # Data: 
+   ### Data, Images,Utility, Views
+   ### Data: 
     Converter and POCO Binding class files,also sqlite db file "students.db"
-    # Images:
+   ### Images:
     Student Images
     Utility:
     Grouping helper file to group students in listview
